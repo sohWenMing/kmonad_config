@@ -1,0 +1,32 @@
+(defcfg
+  ;; windows specific:
+  input  (low-level-hook) 
+  output (send-event-sink) ;; Creates a virtual keyboard
+  fallthrough true 
+  allow-cmd false
+)
+
+;; Define the source keys we care about for this simple example
+(defsrc
+    caps
+    h j k l
+    left right
+)
+
+;; Main Layer 
+(deflayer mainlayer
+    (tap-hold-next-release 300 esc (layer-toggle nav)) ;; tap = Esc, hold = activate layer
+    _ _ _ _ ;; h j k l remain unchanged
+    _ _ ;; left right
+)
+
+;; Define a simple layer
+(deflayer nav
+    _ ;; caps; this should do nothing while in nav layer 
+    left ;; h -> left arrow
+    down ;; j -> down arrow
+    up ;; k -> up arrow
+    right ;; l -> right arrow
+    home             ;; left → move to beginning
+    end              ;; right → move to end
+)

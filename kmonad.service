@@ -1,0 +1,13 @@
+[Unit]
+Description=kmonad keyboard config
+
+[Service]
+Restart=always
+RestartgSec=3
+ExecStart=/usr/bin/kmonad /home/nindgabeet/kmonad/mythinkpad.kbd
+# change path to actual config file for 2nd arg of ExecStart as necessary
+Nice=-2
+
+[Install]
+WantedBy=default.target
+
