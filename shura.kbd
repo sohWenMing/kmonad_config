@@ -1,0 +1,13 @@
+(defcfg
+  input  (device-file "/dev/input/by-id/usb-04d9_USB-HID_Keyboard_000000000532-event-kbd")
+  output (uinput-sink "shura-kmonad")
+  fallthrough true
+)
+
+(defsrc
+  caps
+)
+
+(deflayer main
+  esc ;; Turn caps into escape
+)
